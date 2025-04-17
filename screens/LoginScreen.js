@@ -125,7 +125,7 @@ export default function LoginScreen({ route, navigation }) {
               if (role === 'Student') navigation.replace('StudentHome');
               else if (role === 'Teacher') navigation.replace('TeacherHome');
               else if (role === 'Admin') navigation.replace('AdminHome');
-            }, 1000);
+            }, 500);
 
             break;
           }

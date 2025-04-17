@@ -1,83 +1,70 @@
-// import React from 'react';
-// import { View, Text, StyleSheet } from 'react-native';
-
-// export default function StudentHomeScreen() {
-//   return (
-//     <View style={styles.container}>
-//       <Text style={styles.text}>Welcome, Student 👩‍🎓</Text>
-//     </View>
-//   );
-// }
-
-// const styles = StyleSheet.create({
-//   container: { flex: 1, justifyContent: 'center', alignItems: 'center' },
-//   text: { fontSize: 24, fontWeight: 'bold' },
-// });
-
-
 import React from 'react';
+import { useNavigation } from '@react-navigation/native';
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
 
 export default function StudentHomeScreen() {
+  const navigation = useNavigation();
+
   return (
     <View style={styles.container}>
       {/* Header */}
       <View style={styles.header}>
-        <Text style={styles.headerText}>Student dashboard</Text>
+        <Text style={styles.headerText}>Student Dashboard</Text>
       </View>
 
       <ScrollView contentContainerStyle={styles.content}>
         {/* 📅 Time Table */}
-        <View style={styles.card}>
+        <TouchableOpacity style={styles.card} onPress={() => navigation.navigate('TimeTable')}>
           <Text style={styles.attendancePercent}>📅 TIME TABLE</Text>
-        </View>
+        </TouchableOpacity>
 
         {/* 📊 Attendance */}
-        <View style={[styles.card, styles.centerAlign]}>
+        <TouchableOpacity style={[styles.card, styles.centerAlign]} onPress={() => navigation.navigate('Attendance')}>
           <Text style={styles.attendancePercent}>Attendance</Text>
-          <TouchableOpacity style={styles.detailsButton}>
+          <View style={styles.detailsButton}>
             <Text style={styles.detailsText}>View Details</Text>
-          </TouchableOpacity>
-        </View>
+          </View>
+        </TouchableOpacity>
 
         {/* 🔔 Notifications */}
-        <View style={styles.card}>
+        <TouchableOpacity style={styles.card} onPress={() => navigation.navigate('Notifications')}>
           <Text style={styles.attendancePercent}>🔔 Notifications</Text>
-        </View>
+        </TouchableOpacity>
 
         {/* 📘 Homework */}
-        <View style={styles.card}>
+        <TouchableOpacity style={styles.card} onPress={() => navigation.navigate('Homework')}>
           <Text style={styles.attendancePercent}>📘 Homework</Text>
-        </View>
+        </TouchableOpacity>
 
         {/* 📝 Fees Status */}
-        <View style={styles.card}>
+        <TouchableOpacity style={styles.card} onPress={() => navigation.navigate('Fees')}>
           <Text style={styles.attendancePercent}>📝 Fees Status</Text>
-          <TouchableOpacity style={styles.detailsButton}>
+          <View style={styles.detailsButton}>
             <Text style={styles.detailsText}>Check Now</Text>
-          </TouchableOpacity>
-        </View>
+          </View>
+        </TouchableOpacity>
 
         {/* 🎯 Progress Tracker */}
-        <View style={styles.card}>
+        <TouchableOpacity style={styles.card} onPress={() => navigation.navigate('Progress')}>
           <Text style={styles.attendancePercent}>🎯 Progress Tracker</Text>
-        </View>
+        </TouchableOpacity>
 
         {/* 🧪 Quiz Corner */}
-        <View style={styles.card}>
+        <TouchableOpacity style={styles.card} onPress={() => navigation.navigate('Quiz')}>
           <Text style={styles.attendancePercent}>🧪 Quiz Corner</Text>
-        </View>
+        </TouchableOpacity>
 
         {/* 👨‍🏫 My Teachers */}
-        <View style={styles.card}>
+        <TouchableOpacity style={styles.card} onPress={() => navigation.navigate('Teachers')}>
           <Text style={styles.attendancePercent}>👨‍🏫 My Teachers</Text>
-        </View>
+        </TouchableOpacity>
 
         <View style={{ height: 40 }} />
       </ScrollView>
     </View>
   );
 }
+
 
 const styles = StyleSheet.create({
   container: {
