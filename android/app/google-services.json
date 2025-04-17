@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "850999331949",
+    "firebase_url": "https://digischool-by-deepanshu-default-rtdb.firebaseio.com",
+    "project_id": "digischool-by-deepanshu",
+    "storage_bucket": "digischool-by-deepanshu.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:850999331949:android:20bf2dfb485e6bbb038364",
+        "android_client_info": {
+          "package_name": "com.digischool"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBd6omkLTFrMyKj_rAvED-zdbmE2vdeLKE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
