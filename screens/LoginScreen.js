@@ -1,9 +1,12 @@
-//loginScreen
-
-
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {
-  View,TextInput,Text,StyleSheet,ToastAndroid,TouchableOpacity, Image,
+  View,
+  TextInput,
+  Text,
+  StyleSheet,
+  ToastAndroid,
+  TouchableOpacity,
+  Animated,
 } from 'react-native';
 import { database } from '../services/firebaseConfig';
 import { ref, onValue } from 'firebase/database';
@@ -12,6 +15,16 @@ export default function LoginScreen({ route, navigation }) {
   const { role } = route.params;
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  const logoAnim = useRef(new Animated.Value(0)).current;
+
+  useEffect(() => {
+    Animated.timing(logoAnim, {
+      toValue: 1,
+      duration: 800,
+      useNativeDriver: true,
+    }).start();
+  }, []);
 
   const handleLogin = () => {
     const usersRef = ref(database, 'users');
@@ -32,13 +45,11 @@ export default function LoginScreen({ route, navigation }) {
 
             ToastAndroid.show(`Welcome ${role}`, ToastAndroid.SHORT);
 
-            // Small delay to let Toast show before navigating
             setTimeout(() => {
               if (role === 'Student') navigation.replace('StudentHome');
               else if (role === 'Teacher') navigation.replace('TeacherHome');
               else if (role === 'Admin') navigation.replace('AdminHome');
             }, 500);
-
             break;
           }
         }
@@ -53,7 +64,23 @@ export default function LoginScreen({ route, navigation }) {
 
   return (
     <View style={styles.container}>
-      <Image source={require('../assets/login-logo.png')} style={styles.logo} />
+      <Animated.Image
+        source={require('../assets/login-logo.png')}
+        style={[
+          styles.logo,
+          {
+            opacity: logoAnim,
+            transform: [
+              {
+                scale: logoAnim.interpolate({
+                  inputRange: [0, 1],
+                  outputRange: [0.8, 1],
+                }),
+              },
+            ],
+          },
+        ]}
+      />
 
       <Text style={styles.title}>Login as {role}</Text>
 
@@ -77,19 +104,20 @@ export default function LoginScreen({ route, navigation }) {
         <Text style={styles.buttonText}>Login</Text>
       </TouchableOpacity>
 
-
-      <TouchableOpacity
-        style={styles.backButton}
-        onPress={() => navigation.goBack()}>
+      <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
         <Text style={styles.backText}> Back</Text>
       </TouchableOpacity>
-
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, padding: 24, justifyContent: 'center', backgroundColor: '#f8f9fa' },
+  container: {
+    flex: 1,
+    padding: 24,
+    justifyContent: 'center',
+    backgroundColor: '#f8f9fa',
+  },
   title: {
     fontSize: 26,
     marginBottom: 32,
@@ -125,7 +153,6 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     marginBottom: 20,
   },
-  
   backButton: {
     backgroundColor: '#4a90e2',
     paddingVertical: 12,
@@ -145,5 +172,4 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: '600',
   },
-  
 });

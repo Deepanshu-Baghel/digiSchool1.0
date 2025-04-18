@@ -30,7 +30,7 @@ export default function AppNavigator() {
       <Stack.Screen name="Login" component={LoginScreen} options={{ headerShown: false }} />
 
       {/* Role-Based Home Screens */}
-      <Stack.Screen name="StudentHome" component={StudentHomeScreen} options={{ title: 'Student Dashboard' }} />
+      <Stack.Screen name="StudentHome" component={StudentHomeScreen} options={{ headerShown: false }} />
       <Stack.Screen name="TeacherHome" component={TeacherHomeScreen} />
       <Stack.Screen name="AdminHome" component={AdminHomeScreen} />
 
