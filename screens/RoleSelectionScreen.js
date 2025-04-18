@@ -1,11 +1,17 @@
+//RoleSelectionScreen
+
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
 
 const roles = ['Teacher', 'Student', 'Admin'];
 
 export default function RoleSelectionScreen({ navigation }) {
   return (
     <View style={styles.container}>
+      {/* 👇 Logo and Welcome Text */}
+      <Image source={require('../assets/logo.png')} style={styles.logo} />
+      <Text style={styles.title}>Welcome to digiSchool</Text>
+
       <Text style={styles.heading}>Select Your Role</Text>
 
       {roles.map(role => (
@@ -17,12 +23,6 @@ export default function RoleSelectionScreen({ navigation }) {
         </TouchableOpacity>
       ))}
 
-      {/* 👇 Back Button */}
-      <TouchableOpacity
-        style={styles.backButton}
-        onPress={() => navigation.goBack()}>
-        <Text style={styles.backText}>← Back</Text>
-      </TouchableOpacity>
     </View>
   );
 }
@@ -35,8 +35,25 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingHorizontal: 20,
   },
-  heading: {
+  logo: {
+    width: '60%',
+    height: undefined,
+    aspectRatio: 1,
+    resizeMode: 'contain',
+    marginBottom: 10,
+  },
+
+  title: {
     fontSize: 24,
+    fontWeight: '800',
+    color: '#4a90e2',
+    marginBottom: 20,
+    letterSpacing: 1,
+    fontFamily: 'sans-serif-medium',
+    textAlign: 'center',
+  },
+  heading: {
+    fontSize: 22,
     fontWeight: '700',
     marginBottom: 30,
     color: '#34495e',

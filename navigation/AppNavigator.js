@@ -1,36 +1,9 @@
-// // navigation/AppNavigator.js
-// import React from 'react';
-// import { createNativeStackNavigator } from '@react-navigation/native-stack';
-
-// import WelcomeScreen from '../screens/WelcomeScreen';
-// import RoleSelectionScreen from '../screens/RoleSelectionScreen';
-// import LoginScreen from '../screens/LoginScreen';
-// import AdminHomeScreen from '../screens/AdminHomeScreen';
-// import TeacherHomeScreen from '../screens/TeacherHomeScreen';
-
-// import StudentStackNavigator from './StudentStackNavigator'; // 👈 Import this
-
-// const Stack = createNativeStackNavigator();
-
-// export default function AppNavigator() {
-//   return (
-//     <Stack.Navigator initialRouteName="Welcome">
-//       <Stack.Screen name="Welcome" component={WelcomeScreen} options={{ headerShown: false }} />
-//       <Stack.Screen name="RoleSelection" component={RoleSelectionScreen} />
-//       <Stack.Screen name="Login" component={LoginScreen} />
-//       <Stack.Screen name="AdminHome" component={AdminHomeScreen} />
-//       <Stack.Screen name="TeacherHome" component={TeacherHomeScreen} />
-//       <Stack.Screen name="StudentStack" component={StudentStackNavigator} options={{ headerShown: false }} />
-//     </Stack.Navigator>
-//   );
-// }
-
-
 // navigation/AppNavigator.js
+
+
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import WelcomeScreen from '../screens/WelcomeScreen';
 import RoleSelectionScreen from '../screens/RoleSelectionScreen';
 import LoginScreen from '../screens/LoginScreen';
 import AdminHomeScreen from '../screens/AdminHomeScreen';
@@ -51,11 +24,10 @@ const Stack = createNativeStackNavigator();
 
 export default function AppNavigator() {
   return (
-    <Stack.Navigator initialRouteName="Welcome">
+    <Stack.Navigator initialRouteName="RoleSelection">
       {/* Common Screens */}
-      <Stack.Screen name="Welcome" component={WelcomeScreen} options={{ headerShown: false }} />
-      <Stack.Screen name="RoleSelection" component={RoleSelectionScreen} />
-      <Stack.Screen name="Login" component={LoginScreen} />
+      <Stack.Screen name="RoleSelection" component={RoleSelectionScreen} options={{ headerShown: false }} />
+      <Stack.Screen name="Login" component={LoginScreen} options={{ headerShown: false }} />
 
       {/* Role-Based Home Screens */}
       <Stack.Screen name="StudentHome" component={StudentHomeScreen} options={{ title: 'Student Dashboard' }} />
