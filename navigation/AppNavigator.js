@@ -20,6 +20,14 @@ import ProgressScreen from '../FunctionsScreen/ProgressScreen';
 import QuizScreen from '../FunctionsScreen/QuizScreen';
 import TeachersScreen from '../FunctionsScreen/TeachersScreen';
 
+
+
+import RegisterStudent from '../AdminScreen/RegisterStudent';
+import ClassStudentList from '../AdminScreen/ClassStudentList';
+import AssignHomework from '../AdminScreen/AssignHomework';
+import SendNotification from '../AdminScreen/SendNotification';
+
+
 const Stack = createNativeStackNavigator();
 
 export default function AppNavigator() {
@@ -43,6 +51,13 @@ export default function AppNavigator() {
       <Stack.Screen name="Progress" component={ProgressScreen} />
       <Stack.Screen name="Quiz" component={QuizScreen} />
       <Stack.Screen name="Teachers" component={TeachersScreen} />
+
+
+      <Stack.Screen name="RegisterStudent" component={RegisterStudent} />
+      <Stack.Screen name="ClassStudentList" component={ClassStudentList} />
+      <Stack.Screen name="AssignHomework" component={AssignHomework} />
+      <Stack.Screen name="SendNotification" component={SendNotification} />
+
     </Stack.Navigator>
   );
 }
